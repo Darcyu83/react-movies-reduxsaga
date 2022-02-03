@@ -1,0 +1,18 @@
+.isRouterMatched {
+  color: crimson;
+  font-weight: bold;
+}
+
+.isRouterMatched:before {
+  content: "";
+  border-radius: 10px;
+  width: 10px;
+  min-width: 10px;
+  min-height: 10px;
+  height: 10px;
+  position: absolute;
+  background-color: crimson;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
