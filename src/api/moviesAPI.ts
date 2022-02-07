@@ -25,3 +25,7 @@ export async function getMoviesAPI() {
   console.log("api", results);
   return results;
 }
+
+export function makeImgePath(imgPath: string, size: "w500" | "w200") {
+  return `https://image.tmdb.org/t/p/${size}/${imgPath}`;
+}

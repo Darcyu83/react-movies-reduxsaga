@@ -1,23 +1,27 @@
-import { useSelector } from "react-redux";
-import styled from "styled-components";
-import { Type_RootState } from "../modules";
-import { GridContainer, MaxWidthSection } from "../theme/cssCommon";
+import styled, { keyframes } from "styled-components";
+import NeonText from "../components/cssComponent/NeonText";
+import Text3D from "../components/cssComponent/Text3D";
+import { Container, Content, InnerContainer } from "../theme/cssCommon";
 
-const Container = styled(GridContainer)`
-  color: red;
-  padding-top: 100px;
+const Wapper = styled(Container)`
+  height: 100vh;
 `;
-const InnerContainer = styled(MaxWidthSection)``;
 
+const InnerWapper = styled(InnerContainer)``;
+const Contetents = styled(Content)`
+  flex-direction: column;
+  justify-content: flex-start;
+`;
 function Home() {
-  const { isDarkMode } = useSelector(
-    (state: Type_RootState) => state.themeMode
-  );
-
   return (
-    <Container>
-      <InnerContainer>Content</InnerContainer>
-    </Container>
+    <Wapper>
+      <InnerWapper>
+        <Contetents>
+          <NeonText>Welcome Home</NeonText>
+          <Text3D text="Css Only" height="700px" />
+        </Contetents>
+      </InnerWapper>
+    </Wapper>
   );
 }
 export default Home;

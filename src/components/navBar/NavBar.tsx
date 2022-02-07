@@ -1,21 +1,30 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink, useMatch } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 import styled from "styled-components";
 import { toggleTheme } from "../../modules/themeMode/actions";
 import { FullWidthSection, GridContainer } from "../../theme/cssCommon";
 import ToggleBtn from "../cssComponent/ToggleBtn";
-import styles from "./NavBar.module.css";
+
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useEffect, useState } from "react";
 import { Type_RootState } from "../../modules";
+import MenuNeon from "./MenuNeon";
+import Text3D from "../cssComponent/Text3D";
+import Logo3D from "../cssComponent/Logo3D ";
 
 const Container = styled(GridContainer)`
   position: fixed;
+  width: 100%;
+  min-height: 100px;
   background-color: ${(props) => props.theme.bgColor};
   color: ${(props) => props.theme.textColor};
   gap: 5px;
+  z-index: 9999;
 `;
 const InnerContainer = styled(FullWidthSection)`
+  width: 100%;
+  height: 100%;
+  min-height: 100px;
   background-color: ${(props) => props.theme.bgColor};
   color: ${(props) => props.theme.textColor};
   gap: 3px;
@@ -32,6 +41,7 @@ const Logo = styled.div`
   a {
     width: 80%;
     height: calc(3 / 5 * 80%);
+    max-height: 100px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -40,6 +50,8 @@ const Logo = styled.div`
       background-color: #0abde3;
       width: 100%;
       height: 100%;
+      min-height: 77px;
+      overflow: hidden;
       cursor: pointer;
     }
   }
@@ -51,29 +63,6 @@ const Menus = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-
-  a {
-    margin-right: 10px;
-    position: relative;
-  }
-
-  a:hover {
-    color: #48dbfb !important;
-  }
-
-  a:hover:before {
-    content: "";
-    border-radius: 10px;
-    width: 10px;
-    min-width: 10px;
-    min-height: 10px;
-    height: 10px;
-    position: absolute;
-    background-color: #48dbfb;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
 
   @media screen and (max-width: 1280px) {
     flex-wrap: wrap;
@@ -117,10 +106,7 @@ const MyBtn = styled.div<{ isOpen: boolean }>`
   } ;
 `;
 
-const active = {
-  color: "crimson",
-  fontWeight: "bold",
-};
+const active = {};
 function NavBar() {
   const { isDarkMode } = useSelector(
     (state: Type_RootState) => state.themeMode
@@ -146,7 +132,7 @@ function NavBar() {
       <InnerContainer>
         <Logo>
           <Link to="/">
-            <svg
+            {/* <svg
               xmlns="http://www.w3.org/2000/svg"
               version="1.1"
               viewBox="150 100 200 200"
@@ -154,25 +140,13 @@ function NavBar() {
               <circle cx="70" cy="100" r="100" fill="#f368e0" />
               <circle cx="200" cy="300" r="100" fill="#f368e0" />
               <circle cx="450" cy="100" r="100" fill="#f368e0" />
-            </svg>
+            </svg> */}
+            <Logo3D text="Logo" height="100px" />
           </Link>
         </Logo>
         <Menus>
-          <Link
-            to="/mypage"
-            className={mypageMatched ? styles.isRouterMatched : ""}
-            style={mypageMatched ? active : {}}
-          >
-            My Page
-          </Link>
-          <NavLink
-            to="movies"
-            className={({ isActive }) =>
-              isActive ? styles.isRouterMatched : ""
-            }
-          >
-            Movies
-          </NavLink>
+          <MenuNeon to="/mypage" menuName="My Page" isDarkMode={isDarkMode} />
+          <MenuNeon to="movies" menuName="Movies" isDarkMode={isDarkMode} />
         </Menus>
         <MyBtn isOpen={isOpen} onMouseLeave={onHambergerMouseLeave}>
           <GiHamburgerMenu onClick={onHambergerToggle} />

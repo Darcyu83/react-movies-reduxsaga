@@ -1,6 +1,13 @@
 .isRouterMatched {
-  color: crimson;
-  font-weight: bold;
+  font-size: 20px;
+}
+
+.dark {
+  color: rgba(0, 255, 170, 0.7);
+}
+
+.light {
+  color: rgba(252, 0, 252, 0.7);
 }
 
 .isRouterMatched:before {
@@ -12,7 +19,7 @@
   height: 10px;
   position: absolute;
   background-color: crimson;
-  bottom: -10px;
+  bottom: -15px;
   left: 50%;
   transform: translateX(-50%);
 }
