@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import ErrorIndicator from "../components/cssComponent/ErrorIndicator";
@@ -9,12 +9,15 @@ import { Type_RootState } from "../modules";
 import { getMoviesAct } from "../modules/movies/actions";
 import {
   Container,
-  Content,
   FullWidthSection,
   InnerContainer,
 } from "../theme/cssCommon";
 
-const Wrapper = styled(Container)``;
+const Wrapper = styled(Container)`
+  height: fit-content;
+  min-height: 100vh;
+  padding-bottom: 10px;
+`;
 const FullWidth = styled(FullWidthSection)`
   > * {
     & {
@@ -40,7 +43,7 @@ export default function MovieHome() {
   return (
     <Wrapper>
       <FullWidth>
-        <NeonText>Movies HOme</NeonText>
+        <NeonText>Movies Home</NeonText>
       </FullWidth>
       <InnerContainer>
         <MoviesContainer movies={data} />

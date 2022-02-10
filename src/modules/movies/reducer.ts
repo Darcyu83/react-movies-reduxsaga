@@ -5,7 +5,7 @@ const initialState: Type_InitialState = {
   isLoading: false,
   error: "",
   errorState: false,
-  data: [],
+  data: { popularData: [], topRatedData: [] },
 };
 
 function reducer(

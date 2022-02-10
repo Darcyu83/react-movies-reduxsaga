@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   transform: scale(1);
   animation: all 3s ease-in-out;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.03);
     z-index: 99;
     transform-origin: bottom;
   }
@@ -33,9 +33,17 @@ const Title = styled.p`
   word-break: break-word;
 `;
 
-export default function MovieCard({ movie }: { movie: IMovie }) {
+export default function MovieCard({
+  movie,
+  cate,
+  showPopup,
+}: {
+  movie: IMovie;
+  cate: "popularData" | "topRatedData";
+  showPopup: (cate: "popularData" | "topRatedData", movieId: number) => void;
+}) {
   return (
-    <Wrapper>
+    <Wrapper onClick={() => showPopup(cate, movie.id)}>
       <MovieImg src={makeImgePath(movie.poster_path, "w200")} />
       <Title>{movie.title}</Title>
     </Wrapper>

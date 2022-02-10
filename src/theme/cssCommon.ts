@@ -60,6 +60,8 @@ export const Container = styled(GridContainer)`
 export const InnerContainer = styled(MaxWidthSection)``;
 
 export const Content = styled.div`
+  background-color: ${(props) => props.theme.bgColor};
+  color: ${(props) => props.theme.textColor};
   grid-column: 1 / span 12;
   /* height: calc(100vh - 100px); */
   display: flex;

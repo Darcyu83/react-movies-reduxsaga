@@ -1,15 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { toggleTheme } from "../../modules/themeMode/actions";
 import { FullWidthSection, GridContainer } from "../../theme/cssCommon";
 import ToggleBtn from "../cssComponent/ToggleBtn";
-
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useEffect, useState } from "react";
+import {
+  AiFillFacebook,
+  AiFillInstagram,
+  AiFillTwitterSquare,
+} from "react-icons/ai";
+import { useState } from "react";
 import { Type_RootState } from "../../modules";
 import MenuNeon from "./MenuNeon";
-import Text3D from "../cssComponent/Text3D";
 import Logo3D from "../cssComponent/Logo3D ";
 
 const Container = styled(GridContainer)`
@@ -19,7 +22,7 @@ const Container = styled(GridContainer)`
   background-color: ${(props) => props.theme.bgColor};
   color: ${(props) => props.theme.textColor};
   gap: 5px;
-  z-index: 9999;
+  z-index: 100;
 `;
 const InnerContainer = styled(FullWidthSection)`
   width: 100%;
@@ -81,7 +84,11 @@ const MyBtn = styled.div<{ isOpen: boolean }>`
   align-items: center;
   position: relative;
   width: 100%;
-
+  a {
+    svg {
+      font-size: 1.5rem;
+    }
+  }
   > * {
     &:nth-child(1) {
       display: none;
@@ -106,7 +113,6 @@ const MyBtn = styled.div<{ isOpen: boolean }>`
   } ;
 `;
 
-const active = {};
 function NavBar() {
   const { isDarkMode } = useSelector(
     (state: Type_RootState) => state.themeMode
@@ -124,8 +130,6 @@ function NavBar() {
   const onHambergerMouseLeave = () => {
     setIsOpen(false);
   };
-
-  const mypageMatched = useMatch("/mypage");
 
   return (
     <Container>
@@ -150,8 +154,15 @@ function NavBar() {
         </Menus>
         <MyBtn isOpen={isOpen} onMouseLeave={onHambergerMouseLeave}>
           <GiHamburgerMenu onClick={onHambergerToggle} />
-          <ToggleBtn isDarkMode={isDarkMode} onToggleMode={onToggleMode} />
-          <ToggleBtn isDarkMode={isDarkMode} onToggleMode={onToggleMode} />
+          <a href="http://www.facebook.com" target="_blank" rel="noreferrer">
+            <AiFillFacebook />
+          </a>
+          <a href="http://www.twitter.com" target="_blank" rel="noreferrer">
+            <AiFillTwitterSquare onClick={onHambergerToggle} />
+          </a>
+          <a href="http://www.instagram.com" target="_blank" rel="noreferrer">
+            <AiFillInstagram onClick={onHambergerToggle} />
+          </a>
           <ToggleBtn isDarkMode={isDarkMode} onToggleMode={onToggleMode} />
         </MyBtn>
       </InnerContainer>

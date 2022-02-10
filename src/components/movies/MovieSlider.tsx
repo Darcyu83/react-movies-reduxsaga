@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { IMovie, makeImgePath } from "../../api/moviesAPI";
+import { IMovie } from "../../api/moviesAPI";
 import MovieCard from "./MovieCard";
 import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi";
-import { GiConsoleController } from "react-icons/gi";
 import SliderIndicator from "./SliderIndicator";
 
 const toRight = keyframes`
@@ -62,13 +61,14 @@ const MovingStage = styled.ul`
   gap: 5px;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
+  position: sticky;
 `;
 
 const MovieCardGroup = styled.li`
   width: 100%;
   height: auto;
   scroll-snap-align: start;
-  padding: 40px 0px;
+  padding: 30px 0px;
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 19.5%;
@@ -77,10 +77,17 @@ const MovieCardGroup = styled.li`
   -moz-transition: all 5s ease-out;
   -o-transition: all 5s ease-out;
   -webkit-transition: all 5s ease-out;
-  border: solid 1px red;
 `;
 
-export default function MovieSlider({ movies }: { movies: IMovie[] }) {
+export default function MovieSlider({
+  movies,
+  cate,
+  showPopup,
+}: {
+  movies: IMovie[];
+  cate: "popularData" | "topRatedData";
+  showPopup: (cate: "popularData" | "topRatedData", movieId: number) => void;
+}) {
   const QNTY_CARD = 5;
   const TOTAL_PAGE = Math.ceil(movies.length / QNTY_CARD);
 
@@ -88,7 +95,11 @@ export default function MovieSlider({ movies }: { movies: IMovie[] }) {
   const [currPage, setCurrPage] = useState(0);
 
   useEffect(() => {
-    liRef.current[currPage]?.scrollIntoView();
+    liRef.current[currPage]?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "nearest",
+    });
   }, [currPage]);
 
   const changePage = (payload: number) => {
@@ -114,7 +125,12 @@ export default function MovieSlider({ movies }: { movies: IMovie[] }) {
             {movies
               .slice(index * QNTY_CARD, index * QNTY_CARD + QNTY_CARD)
               .map((movie) => (
-                <MovieCard key={movie.id} movie={movie} />
+                <MovieCard
+                  key={movie.id}
+                  movie={movie}
+                  cate={cate}
+                  showPopup={showPopup}
+                />
               ))}
           </MovieCardGroup>
         ))}

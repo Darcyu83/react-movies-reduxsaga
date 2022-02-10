@@ -1,7 +1,7 @@
 const API_KEY = `72caad34e2c43d870d78d98ae9a0980b`;
 
-let URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-
+let URL_POPULAR = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+let URL_TOP_RATED = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
 export interface IMovie {
   adult: boolean;
   backdrop_path: string;
@@ -20,12 +20,32 @@ export interface IMovie {
 }
 
 export async function getMoviesAPI() {
-  const { results }: { results: IMovie[] } = await (await fetch(URL)).json();
-  console.log("getMoviesAPI start == 1 ");
-  console.log("api", results);
+  const { results }: { results: IMovie[] } = await (
+    await fetch(URL_POPULAR)
+  ).json();
+
   return results;
 }
 
-export function makeImgePath(imgPath: string, size: "w500" | "w200") {
+export function makeImgePath(
+  imgPath: string | undefined,
+  size: "w500" | "w200"
+) {
   return `https://image.tmdb.org/t/p/${size}/${imgPath}`;
+}
+
+export async function fetchInParallel() {
+  const { results: popularData }: { results: IMovie[] } = await (
+    await fetch(URL_POPULAR)
+  ).json();
+
+  const { results: topRatedData }: { results: IMovie[] } = await (
+    await fetch(URL_TOP_RATED)
+  ).json();
+
+  const data = { popularData, topRatedData };
+
+  console.log("api test ==========", data);
+
+  return data;
 }
