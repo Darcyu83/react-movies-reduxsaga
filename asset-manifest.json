@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/react-movies-reduxsaga/static/css/main.9817363f.css",
-    "main.js": "/react-movies-reduxsaga/static/js/main.06a1a4ae.js",
+    "main.js": "/react-movies-reduxsaga/static/js/main.1b072793.js",
     "index.html": "/react-movies-reduxsaga/index.html",
     "main.9817363f.css.map": "/react-movies-reduxsaga/static/css/main.9817363f.css.map",
-    "main.06a1a4ae.js.map": "/react-movies-reduxsaga/static/js/main.06a1a4ae.js.map"
+    "main.1b072793.js.map": "/react-movies-reduxsaga/static/js/main.1b072793.js.map"
   },
   "entrypoints": [
     "static/css/main.9817363f.css",
-    "static/js/main.06a1a4ae.js"
+    "static/js/main.1b072793.js"
   ]
 }
