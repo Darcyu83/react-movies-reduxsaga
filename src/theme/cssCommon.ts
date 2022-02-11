@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 export const GridContainer = styled.div`
   background: ${(props) => props.theme.bgColor};
-  /* width: 100vw;
-  height: 100vh; */
   display: grid;
   grid-template-columns: 1fr repeat(12, minmax(auto, 6.25rem)) 1fr;
   grid-template-rows: max-content;
@@ -36,7 +34,6 @@ export const FullWidthSection = styled.section`
 export const MaxWidthSection = styled.div`
   background: ${(props) => props.theme.bgColor};
   grid-column: 2 / span 12;
-  /* height: 100%; */
   display: grid;
   grid-template-columns: repeat(12, minmax(auto, 6.25rem));
 

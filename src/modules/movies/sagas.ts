@@ -1,11 +1,18 @@
 import { getMoviesActError, getMoviesActSuccess, GET_MOVIES } from "./actions";
 import { call, put, takeLatest } from "redux-saga/effects";
 import { Type_MovieAction, Type_Movies_Data } from "./types";
-import { fetchInParallel } from "../../api/moviesAPI";
+import {
+  fetchInParallel,
+  getPopularMoviesAPI,
+  getTopRatedMoviesAPI,
+  IMovie,
+} from "../../api/moviesAPI";
 
 function* getMoviesSaga(action: Type_MovieAction) {
   try {
-    const data: Type_Movies_Data = yield call(fetchInParallel);
+    const popularData: IMovie[] = yield call(getPopularMoviesAPI);
+    const topRatedData: IMovie[] = yield call(getTopRatedMoviesAPI);
+    const data = { popularData, topRatedData };
     yield put(getMoviesActSuccess(data));
   } catch (error: any) {
     yield put(getMoviesActError(error));

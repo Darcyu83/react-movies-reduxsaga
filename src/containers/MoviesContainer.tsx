@@ -14,7 +14,6 @@ const Contents = styled(Content)`
   align-items: flex-start;
 `;
 const Title = styled.h1`
-  /* flex: 1 0 100%; */
   margin: 15px 0 0 0;
   padding: 5px;
   background-color: rgba(127, 127, 127, 0.5);
@@ -111,7 +110,9 @@ export default function MoviesContainer({
   const [movieInfoPoped, setMovieInfoPoped] = useState<undefined | IMovie>(
     undefined
   );
+
   const { data } = useSelector((state: Type_RootState) => state.movies);
+
   const showPopup = (cate: "popularData" | "topRatedData", movieId: number) => {
     setIsPoped((curr) => !curr);
     const index = data[cate].findIndex((movie: IMovie) => movie.id === movieId);

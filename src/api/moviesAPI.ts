@@ -19,9 +19,17 @@ export interface IMovie {
   vote_count: number;
 }
 
-export async function getMoviesAPI() {
+export async function getPopularMoviesAPI() {
   const { results }: { results: IMovie[] } = await (
     await fetch(URL_POPULAR)
+  ).json();
+
+  return results;
+}
+
+export async function getTopRatedMoviesAPI() {
+  const { results }: { results: IMovie[] } = await (
+    await fetch(URL_TOP_RATED)
   ).json();
 
   return results;
@@ -38,14 +46,11 @@ export async function fetchInParallel() {
   const { results: popularData }: { results: IMovie[] } = await (
     await fetch(URL_POPULAR)
   ).json();
-
   const { results: topRatedData }: { results: IMovie[] } = await (
     await fetch(URL_TOP_RATED)
   ).json();
 
   const data = { popularData, topRatedData };
-
-  console.log("api test ==========", data);
 
   return data;
 }
