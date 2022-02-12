@@ -60,6 +60,7 @@ const MovieInfo = styled.div`
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 50%;
+  grid-auto-rows: 100%;
   padding: 10px;
   gap: 10px;
   position: relative;
@@ -78,6 +79,7 @@ const Porster = styled.img`
   object-fit: cover;
   margin: auto;
   border-radius: 15px;
+  max-height: 100%;
 `;
 const Info = styled.div`
   display: flex;

@@ -23,7 +23,6 @@ export async function getPopularMoviesAPI() {
   const { results }: { results: IMovie[] } = await (
     await fetch(URL_POPULAR)
   ).json();
-
   return results;
 }
 
@@ -31,7 +30,6 @@ export async function getTopRatedMoviesAPI() {
   const { results }: { results: IMovie[] } = await (
     await fetch(URL_TOP_RATED)
   ).json();
-
   return results;
 }
 
@@ -50,7 +48,5 @@ export async function fetchInParallel() {
     await fetch(URL_TOP_RATED)
   ).json();
 
-  const data = { popularData, topRatedData };
-
-  return data;
+  return { popularData, topRatedData };
 }
