@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const GridContainer = styled.div`
+  color: ${(props) => props.theme.textColor};
   background: ${(props) => props.theme.bgColor};
   display: grid;
   grid-template-columns: 1fr repeat(12, minmax(auto, 6.25rem)) 1fr;
@@ -17,6 +18,7 @@ export const GridContainer = styled.div`
 `;
 
 export const FullWidthSection = styled.section`
+  color: ${(props) => props.theme.textColor};
   background: ${(props) => props.theme.bgColor};
   grid-column: 1 / span 14;
   display: grid;
@@ -32,6 +34,7 @@ export const FullWidthSection = styled.section`
 `;
 
 export const MaxWidthSection = styled.div`
+  color: ${(props) => props.theme.textColor};
   background: ${(props) => props.theme.bgColor};
   grid-column: 2 / span 12;
   display: grid;

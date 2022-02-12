@@ -95,7 +95,6 @@ const MyBtn = styled.div<{ isOpen: boolean }>`
     }
   }
   @media screen and (max-width: 1280px) {
-    flex-direction: column;
     justify-content: center;
     flex-wrap: wrap;
   }

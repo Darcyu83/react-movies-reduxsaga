@@ -21,7 +21,7 @@ const Wrapper = styled(Container)`
 const FullWidth = styled(FullWidthSection)`
   > * {
     & {
-      grid-column: 1 / span14;
+      grid-column: 1 / span 14;
     }
   }
 `;
