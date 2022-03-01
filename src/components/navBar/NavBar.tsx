@@ -135,21 +135,12 @@ function NavBar() {
       <InnerContainer>
         <Logo>
           <Link to="/">
-            {/* <svg
-              xmlns="http://www.w3.org/2000/svg"
-              version="1.1"
-              viewBox="150 100 200 200"
-            >
-              <circle cx="70" cy="100" r="100" fill="#f368e0" />
-              <circle cx="200" cy="300" r="100" fill="#f368e0" />
-              <circle cx="450" cy="100" r="100" fill="#f368e0" />
-            </svg> */}
             <Logo3D text="Logo" height="100px" />
           </Link>
         </Logo>
         <Menus>
-          <MenuNeon to="/mypage" menuName="My Page" isDarkMode={isDarkMode} />
-          <MenuNeon to="movies" menuName="Movies" isDarkMode={isDarkMode} />
+          {/* <MenuNeon to="/mypage" menuName="My Page" isDarkMode={isDarkMode} /> */}
+          <MenuNeon to="/" menuName="Movies" isDarkMode={isDarkMode} />
         </Menus>
         <MyBtn isOpen={isOpen} onMouseLeave={onHambergerMouseLeave}>
           <GiHamburgerMenu onClick={onHambergerToggle} />

@@ -144,7 +144,7 @@ export default function Logo3D({
     <Wrapper height={height}>
       <Stage height={height}>
         {[...Array(20)].map((item, index) => (
-          <Layer text={text} />
+          <Layer key={index} text={text} />
         ))}
       </Stage>
     </Wrapper>

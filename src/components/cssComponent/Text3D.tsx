@@ -161,7 +161,6 @@ export default function Text3D({
   text: string;
   height: string;
 }) {
-  console.log(text);
   return (
     <Wrapper height={height}>
       <Stage height={height}>

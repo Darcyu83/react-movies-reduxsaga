@@ -18,11 +18,12 @@ function App() {
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="mypage" element={<MyPage />} />
-            <Route path="/movies" element={<MovieHome />}>
-              <Route path="detail" element={<div>MovieInfo</div>} />
-            </Route>
+            <Route index element={<MovieHome />} />
+            {/* <Route element={<MovieHome />}>
+                <Route index element={<Home />} /> 
+             <Route path="mypage" element={<MyPage />} /> 
+             <Route path="detail" element={<div>MovieInfo</div>} /> 
+            </Route>  */}
           </Route>
         </Routes>
       </BrowserRouter>

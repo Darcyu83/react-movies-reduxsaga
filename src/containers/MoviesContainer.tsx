@@ -144,7 +144,12 @@ export default function MoviesContainer({
       <MovieInfoWrapper isPoped={isPoped}>
         <MovieInfo>
           <AiFillCloseCircle onClick={closePopup} />
-          <Porster src={makeImgePath(movieInfoPoped?.poster_path, "w500")} />
+          <Porster
+            src={makeImgePath(
+              movieInfoPoped && movieInfoPoped.poster_path,
+              "w500"
+            )}
+          />
           <Info>
             <MovieTitle>{movieInfoPoped?.title}</MovieTitle>
             <Overview>{movieInfoPoped?.overview}</Overview>

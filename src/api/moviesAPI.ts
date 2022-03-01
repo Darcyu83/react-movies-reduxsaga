@@ -37,6 +37,7 @@ export function makeImgePath(
   imgPath: string | undefined,
   size: "w500" | "w200"
 ) {
+  if (imgPath === undefined) return;
   return `https://image.tmdb.org/t/p/${size}/${imgPath}`;
 }
 

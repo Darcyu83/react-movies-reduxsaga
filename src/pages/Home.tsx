@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import NeonText from "../components/cssComponent/NeonText";
 import Text3D from "../components/cssComponent/Text3D";
